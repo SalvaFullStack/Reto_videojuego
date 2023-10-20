@@ -43,7 +43,13 @@ class Enemy1 {
         }
       }
     }
-  
+
+    enemy1Defeat() {
+           this.img.src = 'assets/burning_enemy1.png';
+           this.img.frameIndex = 0;
+           this.img.frames = 5;
+           this.enemy1Dead = true;
+  }
     move() {
       this.x -= this.vx;
     }

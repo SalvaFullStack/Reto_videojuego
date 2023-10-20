@@ -18,7 +18,8 @@ const Game = {
     this.canvasW = canvas.width = innerWidth;
     this.canvasH = canvas.height = innerHeight;
     this.bso = new Audio ('assets/BSO_Ghosts.mp3')
- //   this.bso.play()
+    this.bso.play()
+    this.enemySound = new Audio('assets/enemySound.mp3')
     this.reset();
   },
 
@@ -76,23 +77,23 @@ const Game = {
       }
 
       if (this.isCollisionEnemy1()) {
-        this.gameOver();
+   //     this.gameOver();
       }
 
       if (this.isCollisionEnemy2()) {
-        this.gameOver();
+    //    this.gameOver();
       }
 
       if (this.isCollisionEnemy3()) {
-         this.gameOver();
+    //     this.gameOver();
        }
 
        if (this.isCollisionEnemy4()) {
-          this.gameOver();
+     //     this.gameOver();
          }
 
        if (this.isCollisionEnemy5()) {
-          this.gameOver();
+       //   this.gameOver();
           }
     }, 1000 / this.fps);
   },
@@ -224,9 +225,19 @@ const Game = {
       ) {
         if (playerAttacking) {
          
-          this.enemy1.splice(i, 1); 
-          this.enemy1Defeat();
-        } else {
+          enemy.enemy1Defeat()
+          this.addScore(10)
+          this.enemySound.volume = 1
+          this.enemySound.play()  
+
+        } if (enemy.enemy1Dead) {
+
+          setTimeout(() => {
+            this.enemy1.splice(i, 1)
+          }, "1000");
+        }
+          
+          else {
           
          this.gameOver();
         }
@@ -251,11 +262,19 @@ const Game = {
       ) {
         if (playerAttacking2) {
          
-          this.enemy2.splice(i, 1); 
-          this.enemy2Defeat();
-        } else {
+          enemy2.enemy2Defeat()
+          this.addScore(10)  
+
+        } if (enemy2.enemy2Dead) {
+
+          setTimeout(() => {
+            this.enemy2.splice(i, 1)
+          }, "1000");
+        }
           
-          this.gameOver();
+          else {
+          
+         this.gameOver();
         }
         return true; 
       }
@@ -277,11 +296,19 @@ const Game = {
       ) {
         if (playerAttacking3) {
          
-          this.enemy3.splice(i, 1); 
-          this.enemy3Defeat();
-        } else {
+          enemy3.enemy3Defeat()
+          this.addScore(10)  
+
+        } if (enemy3.enemy3Dead) {
+
+          setTimeout(() => {
+            this.enemy3.splice(i, 1)
+          }, "1000");
+        }
           
-           this.gameOver();
+          else {
+          
+         this.gameOver();
         }
         return true; 
       }
@@ -304,16 +331,23 @@ const Game = {
       ) {
         if (playerAttacking4) {
          
-          this.enemy4.splice(i, 1); 
-          this.enemy4Defeat();
-        } else {
+          enemy4.enemy4Defeat()
+          this.addScore(10)  
+
+        } if (enemy4.enemy4Dead) {
+
+          setTimeout(() => {
+            this.enemy4.splice(i, 1)
+          }, "1000");
+        }
+          
+          else {
           
          this.gameOver();
         }
         return true; 
       }
     }
-  
     return false; 
   },
 
@@ -330,9 +364,17 @@ const Game = {
       ) {
         if (playerAttacking5) {
          
-          this.enemy5.splice(i, 1); 
-          this.enemy5Defeat();
-        } else {
+          enemy5.enemy5Defeat()
+          this.addScore(10)  
+
+        } if (enemy5.enemy5Dead) {
+
+          setTimeout(() => {
+            this.enemy5.splice(i, 1)
+          }, "1000");
+        }
+          
+          else {
           
          this.gameOver();
         }
@@ -343,7 +385,10 @@ const Game = {
     return false; 
 
   },
-
+  addScore: function (points) {
+    this.score += points; 
+    this.scoreboard.update(this.score); 
+  },
 
 
   clear: function () {

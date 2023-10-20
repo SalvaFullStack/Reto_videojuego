@@ -43,6 +43,14 @@ class Enemy4 {
         }
       }
     }
+
+    
+    enemy4Defeat() {
+      this.img.src = 'assets/burning_enemy4.png';
+      this.img.frameIndex = 0;
+      this.img.frames = 5;
+      this.enemy4Dead = true;
+}
   
     move() {
       this.x -= this.vx;
