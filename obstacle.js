@@ -3,8 +3,8 @@ class Obstacle {
 		this.ctx = ctx
 		this.canvasW = canvasW
 
-		this.w = 150
-		this.h = 200
+		this.w = 75
+		this.h = 100
 
 		this.x = canvasW
 		this.y = playerY + playerH - this.h

@@ -9,6 +9,9 @@ class Player {
     this.img.src = 'assets/_Run.png'
 
     this.attackSound = new Audio('assets/Attacksound.mp3')
+    this.playerDeathSound= new Audio('assets/playerDeathSound.mp3')
+    this.playerJump = new Audio('assets/playerJump.mp3')
+
 
     this.img.frameIndex = 0
     this.img.frames = 10
@@ -54,6 +57,9 @@ class Player {
            this.img.src = 'assets/_Jump.png'
            this.img.frames = 3
            this.img.frameIndex = 0;
+           this.playerJump.volume = 1
+           this.playerJump.play()
+
           
 
           if(this.y === this.y0){
@@ -119,7 +125,7 @@ class Player {
 
   move() {
 
-    const gravity = 0.1;
+    const gravity = 0.15;
 
 
     switch (true) {
@@ -174,5 +180,18 @@ class Player {
     this.y += this.vy
    
   }
+
+     playerDefeat() {
+      
+     this.img.src = 'assets/_Death.png';
+     this.img.frameIndex = 0;
+     this.img.frames = 10;
+     this.playerDead = true;
+     this.playerDeathSound.volume = 0.75
+     this.playerDeathSound.play()  
+     
+    
+    
+ }
 
 }

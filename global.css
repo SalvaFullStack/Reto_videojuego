@@ -5,3 +5,59 @@ body {
 canvas {
   display: block;
 }
+
+
+body {
+  background-image: url('./assets/Portada.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+ 
+  
+}
+
+
+.titulo {
+
+  color: white;
+  font-size: 100px;
+}
+
+
+
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-size: xx-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    color: white;
+    font-size: large
+}
+
+li {
+    margin: 5px 0;
+    color: white;
+    font-size: large
+}
+
+button {
+  font-size: 24px; 
+  padding: 10px 20px; 
+  background-color: #3498db; 
+  color: #fff; 
+  border: none; 
+  cursor: pointer; 
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #2980b9; 
+}

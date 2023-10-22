@@ -55,15 +55,15 @@ const Game = {
        this.generateEnemy2();
       }
 
-      if (this.frameCounter % 400 === 0) {
+      if (this.frameCounter % 500 === 0) {
         this.generateEnemy3();
       }
 
-      if (this.frameCounter % 450 === 0) {
+      if (this.frameCounter % 600 === 0) {
         this.generateEnemy4();
         }
 
-      if (this.frameCounter % 500 === 0) {
+      if (this.frameCounter % 700 === 0) {
         this.generateEnemy5();
           }
     
@@ -73,27 +73,27 @@ const Game = {
       this.drawAll();
 
       if (this.isCollision()) {
-     //    this.gameOver();
+    
       }
 
       if (this.isCollisionEnemy1()) {
-   //     this.gameOver();
+       
       }
 
       if (this.isCollisionEnemy2()) {
-    //    this.gameOver();
+    
       }
 
       if (this.isCollisionEnemy3()) {
-    //     this.gameOver();
+  
        }
 
        if (this.isCollisionEnemy4()) {
-     //     this.gameOver();
+    
          }
 
        if (this.isCollisionEnemy5()) {
-       //   this.gameOver();
+      
           }
     }, 1000 / this.fps);
   },
@@ -199,15 +199,21 @@ const Game = {
     
   },
 
+ 
+  
   isCollision: function () {
     return this.obstacles.some((obstacle) => {
       if(
-        obstacle.x + 320 < this.player.x + this.player.w &&
+        obstacle.x + 250 < this.player.x + this.player.w &&
         obstacle.x + obstacle.w > this.player.x &&
         obstacle.y + obstacle.h > this.player.y &&
         obstacle.y < this.player.y + this.player.h
       ) {
-       // this.gameOver()
+        if(!this.player.playerDead) {setTimeout(() => {
+          this.gameOver()
+         }, 1000)}
+        
+        this.player.playerDefeat()
       }
     });
   },
@@ -227,20 +233,26 @@ const Game = {
          
           enemy.enemy1Defeat()
           this.addScore(10)
-          this.enemySound.volume = 1
-          this.enemySound.play()  
 
         } if (enemy.enemy1Dead) {
 
           setTimeout(() => {
             this.enemy1.splice(i, 1)
-          }, "1000");
+          }, 1000);
         }
           
           else {
-          
-         this.gameOver();
-        }
+
+            if(!this.player.playerDead) {setTimeout(() => {
+              this.gameOver()
+             }, 1000)}
+            
+            this.player.playerDefeat()
+             
+
+            }
+
+            
         return true; 
       }
     }
@@ -263,18 +275,22 @@ const Game = {
         if (playerAttacking2) {
          
           enemy2.enemy2Defeat()
-          this.addScore(10)  
+          this.addScore(20)  
 
         } if (enemy2.enemy2Dead) {
 
           setTimeout(() => {
             this.enemy2.splice(i, 1)
-          }, "1000");
+          }, 1000);
         }
           
           else {
           
-         this.gameOver();
+            if(!this.player.playerDead) {setTimeout(() => {
+              this.gameOver()
+             }, 1000)}
+            
+            this.player.playerDefeat()
         }
         return true; 
       }
@@ -297,18 +313,21 @@ const Game = {
         if (playerAttacking3) {
          
           enemy3.enemy3Defeat()
-          this.addScore(10)  
+          this.addScore(15)  
 
         } if (enemy3.enemy3Dead) {
 
           setTimeout(() => {
             this.enemy3.splice(i, 1)
-          }, "1000");
+          }, 1000);
         }
           
           else {
-          
-         this.gameOver();
+            if(!this.player.playerDead) {setTimeout(() => {
+              this.gameOver()
+             }, 1000)}
+            
+            this.player.playerDefeat()
         }
         return true; 
       }
@@ -332,18 +351,22 @@ const Game = {
         if (playerAttacking4) {
          
           enemy4.enemy4Defeat()
-          this.addScore(10)  
+          this.addScore(30)  
 
         } if (enemy4.enemy4Dead) {
 
           setTimeout(() => {
             this.enemy4.splice(i, 1)
-          }, "1000");
+          }, 1000);
         }
           
           else {
           
-         this.gameOver();
+            if(!this.player.playerDead) {setTimeout(() => {
+              this.gameOver()
+             }, 1000)}
+            
+            this.player.playerDefeat()
         }
         return true; 
       }
@@ -365,18 +388,22 @@ const Game = {
         if (playerAttacking5) {
          
           enemy5.enemy5Defeat()
-          this.addScore(10)  
+          this.addScore(40)  
 
         } if (enemy5.enemy5Dead) {
 
           setTimeout(() => {
             this.enemy5.splice(i, 1)
-          }, "1000");
+          }, 1000);
         }
           
           else {
-          
-         this.gameOver();
+
+            if(!this.player.playerDead) {setTimeout(() => {
+              this.gameOver()
+             }, 1000)}
+            
+            this.player.playerDefeat()
         }
         return true; 
       }

@@ -6,6 +6,7 @@ class Enemy5 {
   
       this.img = new Image()
       this.img.src = 'assets/Enemy5Walk.png'
+      this.enemySound = new Audio('assets/enemySound.wav')
   
       this.img.frameIndex = 0;
       this.img.frames = 9;
@@ -50,6 +51,9 @@ class Enemy5 {
       this.img.frameIndex = 0;
       this.img.frames = 5;
       this.enemy5Dead = true;
+      this.enemySound.volume = 0.75
+      this.enemySound.play()  
+      
 }
   
     move() {
